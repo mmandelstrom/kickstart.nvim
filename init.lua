@@ -197,6 +197,15 @@ vim.keymap.set('n', '<leader>tt', function()
   vim.cmd 'botright split | resize 15 | terminal'
 end, { desc = 'Öppna terminal under', silent = true })
 
+vim.keymap.set('n', '<leader>vt', function()
+  local columns = vim.o.columns
+  local target_width = math.floor(columns / 4)
+
+  vim.cmd 'botright vsplit'
+  vim.cmd('vertical resize ' .. target_width)
+  vim.cmd 'terminal'
+end, { desc = 'Öppna vertikal terminal (1/5 bredd)', silent = true })
+
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
